@@ -176,35 +176,6 @@ export const validateChangePassword = [
   handleValidationErrors,
 ];
 
-export const validateCreateComment = [
-  body('postId')
-    .trim()
-    .notEmpty()
-    .withMessage('El postId es obligatorio')
-    .isMongoId()
-    .withMessage('El postId debe ser un ObjectId válido'),
-
-  body('content')
-    .trim()
-    .notEmpty()
-    .withMessage('El comentario es obligatorio')
-    .isLength({ max: 1500 })
-    .withMessage('El comentario no puede exceder 1500 caracteres'),
-
-  handleValidationErrors,
-];
-
-export const validateUpdateComment = [
-  body('content')
-    .trim()
-    .notEmpty()
-    .withMessage('El comentario es obligatorio')
-    .isLength({ max: 1500 })
-    .withMessage('El comentario no puede exceder 1500 caracteres'),
-
-  handleValidationErrors,
-];
-
 export const validateMongoIdParam = (paramName) => [
   param(paramName)
     .notEmpty()
