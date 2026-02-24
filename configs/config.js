@@ -103,4 +103,19 @@ export const config = {
       60 *
       1000,
   },
+
+  seed: {
+    enabled: process.env.SEED_ADMIN_ON_STARTUP === 'true',
+    stableToken: process.env.SEED_ADMIN_STABLE_TOKEN !== 'false',
+    fixedToken: process.env.SEED_ADMIN_FIXED_TOKEN || '',
+    admin: {
+      id: process.env.SEED_ADMIN_ID || 'usr_AdminSeed01',
+      name: process.env.SEED_ADMIN_NAME,
+      surname: process.env.SEED_ADMIN_SURNAME,
+      username: process.env.SEED_ADMIN_USERNAME,
+      email: process.env.SEED_ADMIN_EMAIL,
+      password: process.env.SEED_ADMIN_PASSWORD,
+      phone: process.env.SEED_ADMIN_PHONE,
+    },
+  },
 };

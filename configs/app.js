@@ -56,7 +56,9 @@ export const initServer = async () => {
     await mongoConnection();
     await dbConnection();
     const { seedRoles } = await import('../helpers/role-seed.js');
+    const { seedAdminUser } = await import('../helpers/admin-seed.js');
     await seedRoles();
+    await seedAdminUser();
     middlewares(app);
     routes(app);
 
