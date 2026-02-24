@@ -2,10 +2,10 @@ version: '3.9'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: opiniones_postgres
+    container_name: PGestorOpiniones-postgres
     restart: always
     environment:
-      POSTGRES_DB: opiniones_db
+      POSTGRES_DB: GestorOpinionesDB
       POSTGRES_USER: root
       POSTGRES_PASSWORD: admin
     ports:
