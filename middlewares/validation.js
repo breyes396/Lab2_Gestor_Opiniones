@@ -176,53 +176,6 @@ export const validateChangePassword = [
   handleValidationErrors,
 ];
 
-export const validateCreatePost = [
-  body('title')
-    .trim()
-    .notEmpty()
-    .withMessage('El título es obligatorio')
-    .isLength({ max: 120 })
-    .withMessage('El título no puede exceder 120 caracteres'),
-
-  body('category')
-    .trim()
-    .notEmpty()
-    .withMessage('La categoría es obligatoria')
-    .isLength({ max: 60 })
-    .withMessage('La categoría no puede exceder 60 caracteres'),
-
-  body('content')
-    .trim()
-    .notEmpty()
-    .withMessage('El contenido es obligatorio')
-    .isLength({ max: 5000 })
-    .withMessage('El contenido no puede exceder 5000 caracteres'),
-
-  handleValidationErrors,
-];
-
-export const validateUpdatePost = [
-  body('title')
-    .optional()
-    .trim()
-    .isLength({ min: 1, max: 120 })
-    .withMessage('El título debe tener entre 1 y 120 caracteres'),
-
-  body('category')
-    .optional()
-    .trim()
-    .isLength({ min: 1, max: 60 })
-    .withMessage('La categoría debe tener entre 1 y 60 caracteres'),
-
-  body('content')
-    .optional()
-    .trim()
-    .isLength({ min: 1, max: 5000 })
-    .withMessage('El contenido debe tener entre 1 y 5000 caracteres'),
-
-  handleValidationErrors,
-];
-
 export const validateCreateComment = [
   body('postId')
     .trim()
