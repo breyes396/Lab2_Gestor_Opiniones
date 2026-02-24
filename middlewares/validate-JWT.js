@@ -1,9 +1,8 @@
 import { verifyJWT } from '../helpers/generate-jwt.js';
 import { findUserById } from '../helpers/user-db.js';
 
-/**
- * Middleware para validar JWT
- */
+
+
 export const validateJWT = async (req, res, next) => {
   try {
     let token =
@@ -19,13 +18,13 @@ export const validateJWT = async (req, res, next) => {
       });
     }
 
-    // Limpiar el token si viene con Bearer
+
     token = token.replace(/^Bearer\s+/, '');
 
-    // Verificar el token
+
     const decoded = await verifyJWT(token);
 
-    // Buscar el usuario por ID (decoded.sub es string)
+
     const user = await findUserById(decoded.sub);
 
     if (!user) {
@@ -35,7 +34,7 @@ export const validateJWT = async (req, res, next) => {
       });
     }
 
-    // Verificar si el usuario está activo
+
     if (!user.Status) {
       return res.status(423).json({
         success: false,
@@ -43,7 +42,7 @@ export const validateJWT = async (req, res, next) => {
       });
     }
 
-    // Agregar el usuario al request
+
     req.user = user;
     req.userId = user.Id.toString();
 
